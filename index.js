@@ -191,6 +191,7 @@ app.get('/checkout', function (req, res) {
 });
 
 
+
 app.get('/tela_de_cadastro', function(req,res){
     res.render('pages/cadastro');
 });
