@@ -194,3 +194,15 @@ app.get('/checkout', function (req, res) {
 app.get('/tela_de_cadastro', function(req,res){
     res.render('pages/cadastro');
 });
+
+app.get('/pesquisar', function (req, res) {
+    var searchTerm = req.query.term;
+    con.query("SELECT * FROM produto WHERE nome_prod LIKE ?", ['%' + searchTerm + '%'], function (err, result) {
+      if (err) {
+        console.error('Erro ao executar a consulta:', err);
+        res.status(500).send('Erro ao realizar a pesquisa');
+      } else {
+        res.render('pages/pesquisa', { result: result, searchTerm: searchTerm });
+      }
+    });
+  });

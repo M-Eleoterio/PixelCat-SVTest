@@ -43,7 +43,7 @@ body {
     margin-top: 10%;
 }
 
-header #term {
+header #query {
     margin-top: 40px;
     margin-right: 300px;
     height: 40px;
@@ -186,7 +186,4 @@ footer {
   nav .tab {
     margin-right: 50px;
     font-size: 25px;
-    background: none;
-    border: none;
-    cursor: pointer;
   }
