@@ -67,11 +67,17 @@
                      <h3>R$<%= item.preco_prod %></h3>
                      <% } %>
                      </h3>
-                 <form type="submit" value="add to cart" action="/add_to_cart">
-                    <input type="submit" value="Adicionar ao carrinho" name="botao" class="botao">
+                 <form action="/add" method="post">
+                     <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                     <input type="hidden" name="nome_prod" value="<%= item.nome_prod %>">
+                     <input type="hidden" name="preco_prod" value="<%= item.preco_prod %>">
+                     <input type="hidden" name="precoDesconto_prod" value="<%= item.precoDesconto_prod %>">
+                     <input type="hidden" name="plataforma_prod" value="<%= item.plataforma_prod %>">
+                     <input type="hidden" name="imagem_prod" value="<%= item.imagem_prod %>">
+                     <input type="hidden" name="quantidade_prod" value="1">
+                     <input type="submit" value="Adicionar ao carrinho" name="botao" class="botao">
                  </form>
                  </div>
-                 <% count++; %>
              <% }) %>
 
     </main>

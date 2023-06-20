@@ -32,53 +32,31 @@
     </div>
     <div class="cart">
       <ul class="cartWrap">
+        <% cart.forEach(function(item) { %>
         <li class="items even">
           <div class="infoWrap">
             <div class="cartSection">
-              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg">
-              <p class="itemName">Resident Evil 2 / BIOHAZARD 2</p>
+              <img src="img/<%= item.imagem_prod %>" alt="" class="itemImg">
+              <p class="itemName"><%= item.nome_prod %></p>
               <p>
-                <input type="text" class="qty" placeholder="Qtd">
+                <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>">
               </p>
-              <p>R$5.00</p>
+                <% if(item.precoDesconto_prod){ %>
+                  <p>R$<%= item.precoDesconto_prod * item.quantidade_prod %></p>
+                <% }else{ %>
+                  <p>R$<%= item.preco_prod * item.quantidade_prod %></p>
+                <% } %>
             </div>
             <div class="cartSection removeWrap">
               <a href="#" class="remove">x</a>
             </div>
           </div>
         </li>
-        <li class="items even">
-          <div class="infoWrap">
-            <div class="cartSection">
-              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg">
-              <p class="itemName">#QUE-007544-002</p>
-              <p>
-                <input type="text" class="qty" placeholder="Qtd">
-              </p>
-              <p>R$5.00</p>
-            </div>
-            <div class="cartSection removeWrap">
-              <a href="#" class="remove">x</a>
-            </div>
-          </div>
-        </li>
-        <li class="items even">
-          <div class="infoWrap">
-            <div class="cartSection">
-              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg">
-              <p class="itemName">#QUE-007544-002</p>
-                <input type="text" class="qty" placeholder="Qtd">
-                <p>R$5.00</p>
-            </div>
-            <div class="cartSection removeWrap">
-              <a href="#" class="remove">x</a>
-            </div>
-          </div>
-        </li>
+        <% }) %>
       </ul>
     </div>
     <div class="subtotal cf">
-      Total:<br> <span class="price">R$75.00</span>
+      Total:<br> <span class="price">R$<%= total %></span>
     </div>
     <br>
         <li class="totalRow"><a href="#" class="btn continue">Comprar</a>
