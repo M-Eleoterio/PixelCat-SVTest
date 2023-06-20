@@ -48,7 +48,10 @@
                 <% } %>
             </div>
             <div class="cartSection removeWrap">
-              <a href="#" class="remove">x</a>
+              <form method="post" action="/remove_product">
+                <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                <button type="submit" class="remove" value="x">
+              </form>
             </div>
           </div>
         </li>

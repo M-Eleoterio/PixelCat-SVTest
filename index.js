@@ -91,3 +91,17 @@ app.get('/carrinho',function(req,res){
     var total = req.session.total;
     res.render('pages/carrinho',{cart:cart,total:total});
 });
+
+app.post('/remove_product',function(req,res){
+    var id_prod = req.body.id_prod;
+    var cart = req.body.cart;
+
+    for(let i=0; i<cart.length; i++){
+        if(cart[i].id_prod == id_prod){
+            cart.splice(cart.indexOf(i),1);
+        }
+    }
+    //recalcular
+    calculateTotal(cart,req);
+    res.redirect('/carrinho');
+});
