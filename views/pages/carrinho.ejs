@@ -39,7 +39,12 @@
               <img src="img/<%= item.imagem_prod %>" alt="" class="itemImg">
               <p class="itemName"><%= item.nome_prod %></p>
               <p>
-                <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>">
+                <form method="post" action="/edit">
+                  <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
+                  <input type="submit" value="-" name="decrease" class="btnQtd">
+                  <input type="text" class="qty" placeholder="Qtd" value="<%= item.quantidade_prod %>" readonly>
+                  <input type="submit" value="+" name="increase" class="btnQtd">
+                </form>
               </p>
                 <% if(item.precoDesconto_prod){ %>
                   <p>R$<%= item.precoDesconto_prod * item.quantidade_prod %></p>
@@ -49,8 +54,9 @@
             </div>
             <div class="cartSection removeWrap">
               <form method="post" action="/remove_product">
+
                 <input type="hidden" name="id_prod" value="<%= item.id_prod %>">
-                <button type="submit" class="remove" value="x">
+                <button type="submit" class="remove" value="Remover">X</button>
               </form>
             </div>
           </div>
@@ -59,14 +65,47 @@
       </ul>
     </div>
     <div class="subtotal cf">
-      Total:<br> <span class="price">R$<%= total %></span>
+      Total:<br> <input type="text" class="price" maxlength="9" value="R$<%= total %>">
     </div>
     <br>
-        <li class="totalRow"><a href="#" class="btn continue">Comprar</a>
-    
   </div>
 
-  <script src="carrinho.js"></script>
+  <div class="payment-form" id="paymentForm">
+    <div class="container">
+      <h1>PAGAMENTO - CARTÂO</h1>
+      <form method="get" action="/checkout">
+        <div class="form-group">
+          <label for="name">Nome no Cartão:</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="card-number">Número do Cartão:</label>
+          <input type="text" id="card-number" required>
+        </div>
+        <div class="form-group">
+          <label for="expiry-date">Data de Vencimento:</label>
+          <input type="text" id="expiry-date"  required>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Número de Telefone:</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <button type="submit" class="btn continue">Realizar Pagamento</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/jquery.inputmask.min.js"></script>
+  <script src="carrinho.js">
+    $(document).ready(function() {
+    $('#expiry-date').inputmask('99/9999');
+  });
+  </script>
 </body>
 
 </html>

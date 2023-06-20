@@ -49,6 +49,13 @@ body {
     border: none;
 }
 
+.formulario-login input:focus{
+    transform: scale(1.2);
+    background-color: rgb(212, 212, 212);
+    transition: 0.5s;
+    font-size: large;
+}
+
 .formulario-login button {
     width: 112%;
     padding: 15px;
@@ -81,6 +88,10 @@ p {
 .formulario-login h2 {
     text-align: center;
     font-size: 35px;
+}
+
+#link {
+    color: white;
 }
 
 /* Estilos para dispositivos móveis */
